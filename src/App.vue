@@ -1,26 +1,26 @@
 <template>
-  <MyBtn text="포도" style="border-radius: 30px" />
-  <MyBtn color="red">사과</MyBtn>
-  <MyBtn color="#404040">딸기</MyBtn>
-  <MyBtn :color="color">파인애플</MyBtn>
-  <MyBtn large color="royalblue">블루베리</MyBtn>
-  <MyBtn>Apple</MyBtn>
-  <MyBtn :color="color"><span style="color: red">lemon</span></MyBtn>
-
-  <button>Banana</button>
+  <button @click="message = 'good'">Click!</button>
+  <h1>App: {{ message }}</h1>
+  <Parent :msg="message" />
 </template>
 
 <script>
 //부모자식간의 데이터 통신
-import MyBtn from "~/components/MyBtn.vue";
+import Parent from "~/components/Parent.vue";
+import { computed } from "vue";
 
 export default {
   components: {
-    MyBtn,
+    Parent,
   },
   data() {
     return {
-      color: "#000",
+      message: "Hello world",
+    };
+  },
+  provide() {
+    return {
+      msg: computed(() => this.message),
     };
   },
 };
