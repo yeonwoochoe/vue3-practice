@@ -1,15 +1,12 @@
 <template>
-  <button @click="one($event), two($event)">Submit</button>
+  <input type="text" @keydown.ctrl.shift.a="handler" />
 </template>
 
 <script>
 export default {
   methods: {
-    one(event) {
-      console.log(event);
-    },
-    two(event) {
-      console.log(event);
+    handler() {
+      console.log("Enter!");
     },
   },
 };
